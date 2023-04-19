@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+void put(int*, int*, char*);
+void distinguish(char,int*,int*,int*);
+void cs(char*);
+
+int main() {
+    int n1, n2, result =0;
+    char oper, chose;
+    do {
+        n1, n2, result = 0;
+        oper = 'a';
+        put(&n1, &n2, &oper);
+
+        if (oper == '+') {
+            distinguish(oper, &n1, &n2, &result);
+        }
+        else if (oper == '-') {
+            distinguish(oper,&n1,&n2,&result);
+        }
+        else if (oper == '*') {
+            distinguish(oper, &n1, &n2, &result);
+        }
+        else if (oper == '/') {
+            distinguish(oper, &n1, &n2, &result);
+        }
+        else {
+            for (int i = 1; i <= 1;) {
+                std::cout << "Enter operator(+,-,*,/) : ";
+                cin >> oper;
+                if (oper == '+') {
+                    i++;
+                }
+                if (oper == '-') {
+                    i++;
+                }
+                if (oper == '*') {
+                    i++;
+                }
+                if (oper == '/') {
+                    i++;
+                }
+            }
+            distinguish(oper, &n1, &n2, &result);
+        }
+
+        std::cout << "Result is : " << result<<"\n";
+        std::cout << "Continue? ";
+        cin >> chose;
+        cs(&chose);
+        while (chose == '2') {
+            cin >> chose;
+            cs(&chose);
+        }
+    } while (chose == '1');
+    
+    std::cout << "프로그램 종료";
+    return 0;
+
+}
+ 
+void put(int* pa, int* pb, char* pd) {
+    std::cout << "Enter first operand: ";
+    cin >> *pa;
+    std::cout << "Enter second operand: ";
+    cin >> *pb;
+    std::cout << "Enter operator(+,-,*,/) : ";
+    cin >> *pd;
+
+}
+
+void distinguish(char f, int* pa,int* pb,int* pr) {
+    if (f == '+') {
+        *pr = *pa + *pb;
+    }
+    else if (f == '-') {
+        *pr = *pa - *pb;
+    }
+    else if (f == '*') {
+        *pr = *pa * *pb;
+    }
+    else {
+        *pr= *pa / *pb;
+    }
+}
+void cs(char* k) {
+    if (*k == 'n') {
+        *k = '0';
+    }
+    else if (*k == 'N')
+        *k = '0';
+    else if (*k == 'Y')
+        *k = '1';
+    else if (*k == 'y')
+        *k = '1';
+    else
+        *k = '2';
+}
